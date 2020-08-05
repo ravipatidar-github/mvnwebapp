@@ -1,10 +1,20 @@
-node{
-   stage('SCM Checkout'){
-    git 'https://github.com/ravipatidar-github/mvnwebapp'
+pipeline {
+    agent any
+    stages {
+        stage('---clean---') {
+            steps {
+                bat "mvn clean"
+            }
+        }
+        stage('--test--') {
+            steps {
+                bat "mvn test"
+            }
+        }
+        stage('--package--') {
+            steps {
+                bat "mvn package"
+            }
+        }
     }
-    stage ('Compile-Package'){
-      //Get maven home path
-      def mvnHome = tool name: 'Maven 3.6.3', type: 'maven'
-      bat "mvn clean install"
-      }
-   }
+}
