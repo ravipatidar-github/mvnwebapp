@@ -5,6 +5,6 @@ node{
     stage ('Compile-Package'){
       //Get maven home path
       def mvnHome = tool name: 'Maven 3.6.3', type: 'maven'
-       mvn package
+      bat "mvn clean install"
       }
    }
