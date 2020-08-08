@@ -20,19 +20,18 @@ pipeline {
         stage ('upload war to nexus') {
             steps{
                 nexusArtifactUploader artifacts: [
-                    [artifactId: 'mvnwebapp',
-                     classifier: '',
-                     file: '',
-                     type: 'war'
-                   ]
+              [artifactId: 'mvnwebapp',
+              classifier: '',
+              file: 'target/mvnwebapp Maven Webapp-0.0.1-SNAPSHOT.war',
+              type: 'war']
                 ], 
-                    credentialsId: 'Nexus', 
-                    groupId: 'jenkins.mvn.demo', 
-                    nexusUrl: 'localhost:8081', 
-                    nexusVersion: 'nexus3',
-                    protocol: 'http', 
-                    repository: 'SAMPLE-REL', 
-                    version: '0.0.1-SNAPSHOT'
+              credentialsId: 'Nexus',
+              groupId: 'jenkins.mvn.demo',
+              nexusUrl: 'localhost:8081',
+              nexusVersion: 'nexus3', 
+              protocol: 'http',
+              repository: 'SAMPLE-REL',
+              version: '0.0.1-SNAPSHOT'
             
             }
             
