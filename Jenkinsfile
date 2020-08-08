@@ -20,6 +20,11 @@ pipeline {
               steps {
                   withSonarQubeEnv('sonarqube')
                   bat 'mvn clean install sonar: sonar'
+                  sonar-scanner.bat -D
+                  "sonar.projectKey=SONAR" -D
+                  "sonar.sources=." -D
+                  "sonar.host.url=http://localhost:9000" -D
+                  "sonar.login=789d74bfdefdee292295fb4f9dc992f218de9ec6"
               }
          }
         stage ('upload war to nexus') {
