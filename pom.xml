@@ -24,16 +24,24 @@
   <build>
     <finalName>mvnwebapp</finalName>
   </build>
-	<distributionManagement>
-        <repository>
-            <id>deployment</id>
-            <name>Internal Releases</name>
-            <url>http://localhost:8081/repository/SAMPLE-REL/</url>
-        </repository>
-        <snapshotRepository>
-            <id>deployment</id>
-            <name>Internal Snapshot Releases</name>
-            <url>http://localhost:8081/repository/SAMPLE-SNAP/</url>
-        </snapshotRepository>
-    </distributionManagement>
+	 <plugins>
+      
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+        <source>1.6</source>
+        <target>1.6</target>
+    </configuration>
+</plugin>
+     
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+    <configuration>
+      <additionalparam>-Xdoclint:none</additionalparam>
+    </configuration>
+  </plugin>
+ 
+    </plugins>
 </project>
