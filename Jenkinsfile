@@ -31,7 +31,7 @@ pipeline {
               nexusVersion: 'nexus3', 
               protocol: 'http',
               repository: 'SAMPLE-REL',
-              version: '0.0.2-SNAPSHOT'
+              version: '1.0.0'
             
             }
             
