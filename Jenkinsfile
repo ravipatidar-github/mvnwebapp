@@ -22,7 +22,7 @@ pipeline {
                 nexusArtifactUploader artifacts: [
               [artifactId: 'mvnwebapp',
               classifier: '',
-              file: 'target/mvnwebapp-0.0.1-SNAPSHOT.war',
+              file: 'target/mvnwebapp.war',
               type: 'war']
                 ], 
               credentialsId: 'Nexus',
