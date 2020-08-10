@@ -21,10 +21,10 @@ pipeline {
                   withSonarQubeEnv('sonarqube')
                   bat 'mvn clean install sonar: sonar'
                   sonar-scanner.bat -D
-                  "sonar.projectKey=SONAR" -D
+                  "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
                   "sonar.host.url=http://localhost:9000" -D
-                  "sonar.login=789d74bfdefdee292295fb4f9dc992f218de9ec6"
+                  "sonar.login=19feec3fed72328451b0f0623e61c639fe12c458"
               }
          }
         
