@@ -21,10 +21,10 @@ pipeline {
         stage('sonarqube analysis') {
             steps {
                 script {
-                    def scannerHome = tool 'sonarqube';
+                    def scannerHome = tool 'SONAR_RUNNER_HOME';
                     
                     withSonarQubeEnv(credentialsId: 'NewProject') {
-                        bat "${tool("sonarqube")}/bin/sonar-scanner.bat" -D
+                        bat "${tool("SONAR_RUNNER_HOME")}/bin/sonar-scanner.bat" -D
                   "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
                   "sonar.host.url=http://localhost:9000" -D
