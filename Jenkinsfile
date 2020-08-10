@@ -19,16 +19,18 @@ pipeline {
         
         
         stage('sonarqube analysis') {
-            def scannerHome=tool name: 'SONAR_RUNNER_HOME', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
             steps {
-                withSonarQubeEnv(credentialsId: 'NewProject') {
-                    bat "mvn sonar:sonar"}
-                  sonar-scanner.bat -D
+                script {
+                    def scannerHome = tool 'sonarqube';
+                    
+                    withSonarQubeEnv(credentialsId: 'NewProject') {
+                        bat "${tool("sonarqube")}/bin/sonar-scanner.bat" -D
                   "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
                   "sonar.host.url=http://localhost:9000" -D
                   "sonar.login=19feec3fed72328451b0f0623e61c639fe12c458"
-           
+                    }
+                }
             }
         }
         
