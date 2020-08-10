@@ -18,11 +18,11 @@ pipeline {
         }
         
         
-        stage('build & sonarqube analysis') {
+        stage('sonarqube analysis') {
               steps {
                   withSonarQubeEnv(credentialsId: 'NewProject') {
-                  def mvntool =tool name: 'SONAR_RUNNER_HOME', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                  bat 'mvn clean install sonar: sonar'
+                  def scannerHome=tool name: 'SONAR_RUNNER_HOME', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                  bat 'sonar: sonar'
                   sonar-scanner.bat -D
                   "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
