@@ -16,15 +16,19 @@ pipeline {
                 bat "mvn package"
             }
         }
+        
+        
         stage('build & sonarqube analysis') {
               steps {
-                  withSonarQubeEnv('sonarqube')
+                  withSonarQubeEnv(credentialsId: 'NewProject') {
+                  def mvntool =tool name: 'SONAR_RUNNER_HOME', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
                   bat 'mvn clean install sonar: sonar'
                   sonar-scanner.bat -D
                   "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
                   "sonar.host.url=http://localhost:9000" -D
                   "sonar.login=19feec3fed72328451b0f0623e61c639fe12c458"
+                  }
               }
          }
         
