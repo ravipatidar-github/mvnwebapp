@@ -20,9 +20,8 @@ pipeline {
         
         stage('sonarqube analysis') {
               steps {
-                  withSonarQubeEnv(credentialsId: 'NewProject') {
                   def scannerHome=tool name: 'SONAR_RUNNER_HOME', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                  bat 'sonar: sonar'
+                  withSonarQubeEnv(credentialsId: 'NewProject') {
                   sonar-scanner.bat -D
                   "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
