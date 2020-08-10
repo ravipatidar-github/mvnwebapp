@@ -20,13 +20,15 @@ pipeline {
         
         stage('sonarqube analysis') {
             def scannerHome=tool name: 'SONAR_RUNNER_HOME', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
-                  withSonarQubeEnv(credentialsId: 'NewProject') {
+            steps {
+                withSonarQubeEnv(credentialsId: 'NewProject') {
                   sonar-scanner.bat -D
                   "sonar.projectKey=NewProject" -D
                   "sonar.sources=." -D
                   "sonar.host.url=http://localhost:9000" -D
                   "sonar.login=19feec3fed72328451b0f0623e61c639fe12c458"
                   }
+            }
         }
         
         stage ('upload war to nexus') {
