@@ -18,23 +18,23 @@ pipeline {
         }
         
         
-        stage('sonarqube analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'SONAR_RUNNER_HOME';
+      //  stage('sonarqube analysis') {
+         //   steps {
+          //      script {
+          //          def scannerHome = tool 'SONAR_RUNNER_HOME';
                     
-                    withSonarQubeEnv(credentialsId: 'NewProject') {
-                        bat "${tool("SONAR_RUNNER_HOME")}/bin/sonar-scanner \
-                  -Dsonar.projectKey=NewProject \
-                  -Dsonar.sources=. \
-                  -Dsonar.host.url=http://localhost:9000 \
-                  -Dsonar.login=19feec3fed72328451b0f0623e61c639fe12c458"
-                    }
-                }
-            }
-        }
+             //       withSonarQubeEnv(credentialsId: 'NewProject') {
+            //            bat "${tool("SONAR_RUNNER_HOME")}/bin/sonar-scanner \
+             //     -Dsonar.projectKey=NewProject \
+              //    -Dsonar.sources=. \
+              //    -Dsonar.host.url=http://localhost:9000 \
+             //     -Dsonar.login=19feec3fed72328451b0f0623e61c639fe12c458"
+                //    }
+            //    }
+          //  }
+    //    }
         
-        stage ('upload war to nexus') {
+     /* stage ('upload war to nexus') {
             steps{
                 nexusArtifactUploader artifacts: [
               [artifactId: 'mvnwebapp',
@@ -52,6 +52,6 @@ pipeline {
             
             }
             
-        }
+        } */
     }
 }
